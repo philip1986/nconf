@@ -16,7 +16,7 @@ exports.assertMerged = function (err, merged) {
   merged = merged instanceof nconf.Provider 
     ? merged.store.store
     : merged;
-    
+  
   assert.isNull(err);
   assert.isObject(merged);
   assert.isTrue(merged.apples);

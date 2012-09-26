@@ -19,7 +19,8 @@
     "async": "0.1.x",
     "ini": "1.x.x",
     "optimist": "0.3.x",
-    "pkginfo": "0.2.x"
+    "pkginfo": "0.2.x",
+    "merge-recursive": "0.0.3"
   },
   "devDependencies": {
     "vows": "0.6.x"
@@ -32,4 +33,3 @@
     "node": ">= 0.4.0"
   }
 }
-

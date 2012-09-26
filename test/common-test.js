@@ -19,13 +19,13 @@ vows.describe('nconf/common').addBatch({
   "Using nconf.common module": {
     "the loadFiles() method": {
       topic: function () {
-        nconf.loadFiles(files, this.callback);
+        nconf.common.loadFiles(files, this.callback);
       },
       "should merge the files correctly": helpers.assertMerged
     },
     "the loadFilesSync() method": {
       "should merge the files correctly": function () {
-        helpers.assertMerged(null, nconf.loadFilesSync(files));
+        helpers.assertMerged(null, nconf.common.loadFilesSync(files));
       }
     }
   }

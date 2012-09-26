@@ -26,6 +26,7 @@ vows.describe('nconf/hierarchy').addBatch({
         return nconf;
       },
       "should have the appropriate keys present": function () {
+        console.error(nconf.stores, nconf.get('title'))
         assert.equal(nconf.get('title'), 'My specific title');
         assert.equal(nconf.get('color'), 'green');
         assert.equal(nconf.get('movie'), 'Kill Bill');

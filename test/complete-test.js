@@ -61,7 +61,7 @@ vows.describe('nconf/multiple-stores').addBatch({
     "and saving *synchronously*": {
       topic: function () {
         nconf.set('weebls', 'stuff');
-        return nconf.save();
+        return nconf.saveSync();
       },
       "correct return value": function (topic) {
         Object.keys(topic).forEach(function (key) {
@@ -93,6 +93,7 @@ vows.describe('nconf/multiple-stores').addBatch({
     "and saving *asynchronously*": {
       topic: function () {
         nconf.set('weebls', 'crap');
+        console.error('SAVING')
         nconf.save(this.callback);
       },
       "correct return value": function (err, data) {
@@ -103,24 +104,26 @@ vows.describe('nconf/multiple-stores').addBatch({
       },
       "the file": {
         topic: function () {
-          fs.readFile(completeTest, 'utf8', this.callback);
+          return fs.readFileSync(completeTest, 'utf8');
         },
         "saved correctly": function (err, data) {
           assert.isNull(err);
+          console.error(data+'')
           data = JSON.parse(data);
           Object.keys(data).forEach(function (key) {
             assert.deepEqual(nconf.get(key), data[key]);
           });
           assert.equal(nconf.get('weebls'), 'crap');
+        },
+        teardown: function () {
+          console.error(completeTest)
+          fs.unlinkSync(completeTest);
+          nconf.remove('file');
+          nconf.remove('memory');
+          nconf.remove('argv');
+          nconf.remove('env');
         }
       }
-    },
-    teardown: function () {
-      fs.unlinkSync(completeTest);
-      nconf.remove('file');
-      nconf.remove('memory');
-      nconf.remove('argv');
-      nconf.remove('env');
     }
   }
 }).export(module);
