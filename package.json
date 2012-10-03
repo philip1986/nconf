@@ -1,0 +1,8 @@
+{
+  "name": "nconf-stores",
+  "version": "0.0.0",
+  "main": "lib/index.js",
+  "dependencies": {
+    "async": "~0.1.22"
+  }
+}
