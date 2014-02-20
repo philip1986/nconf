@@ -51,6 +51,23 @@ vows.describe('nconf').addBatch({
           assert.isTrue(nconf.set('foo:bar:bazz', 'buzz'));
         }
       },
+      "the set(store, key, value) method": {
+        "should only set a value in the selected store": function(){
+          nconf.add('storeA', { type: 'memory'});
+          nconf.add('storeB', { type: 'memory'});
+
+          nconf.set('storeA', 'hello', 'world');
+          nconf.set('storeB', 'hello', 'user');
+
+          assert.deepEqual(nconf.stores['storeA'].store, {hello: 'world'});
+          assert.deepEqual(nconf.stores['storeB'].store, {hello: 'user'});
+          assert.equal(nconf.get('hello'), 'world')
+
+          // clean up
+          nconf.remove('storeA');
+          nconf.remove('storeB');
+        }
+      },
       "the get() method": {
         "without a callback": {
           "should respond with the correct value": function () {
