@@ -1,7 +1,7 @@
 {
   "name": "nconf",
   "description": "Hierarchical node.js configuration with files, environment variables, command-line arguments, and atomic object merging.",
-  "version": "0.6.9",
+  "version": "0.7.0",
   "author": "Nodejitsu Inc. <info@nodejitsu.com>",
   "maintainers": [
     "indexzero <charlie@nodejitsu.com>"
@@ -18,10 +18,14 @@
   "dependencies": {
     "async": "0.2.9",
     "ini": "1.x.x",
-    "optimist": "0.6.0"
+    "optimist": "0.6.0",
+    "http-sync": "0.0.4",
+    "request": "2.33.0"
   },
   "devDependencies": {
-    "vows": "0.7.x"
+    "vows": "0.7.x",
+    "nock": "0.27.2",
+    "sinon": "1.8.2"
   },
   "main": "./lib/nconf",
   "scripts": {
