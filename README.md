@@ -105,7 +105,7 @@ nconf.etcd('A', {key: 'databases/db1', cluster: cluster, sync: true})
 //
 // Observe the configuration object
 //
-nconf.watch().on('change', function(obj){
+nconf.on('change', function(obj){
   // Assuming something changed etcd that is stored under the key 'databases/db1'.
   // Considering the hierarchy nconf.get() will deliver the latest configuration.
   // This is just to inform the app about something changed.
